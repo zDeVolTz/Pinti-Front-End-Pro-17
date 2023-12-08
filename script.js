@@ -86,14 +86,17 @@ console.log(doMath(x,"v",y));
 
 function twoDimensionalArr() {
     const rows = +prompt("Введіть кількість рядків двовимірного масиву");
-    const columns = +prompt("Введіть кількість стовпців двовимірного масиву");
-    const resultArr = [];
-    for(let i = 0 ; i < rows; i++){
-        const internalArr = [];
-        for (let j = 0; j < columns; j++) {
-            internalArr.push(prompt(`Введіть значення для елемента в рядку ${i + 1}, стовпці ${j + 1}`));
+    
+    const resultArr = new Array(rows);
+    //Заполняем массив вложенными массивами формирую 2 мерный разряженный массив или обычный если длина всех вложенных равна
+    for (let i = 0 ; i < resultArr.length; i++){
+        resultArr[i] = new Array(+prompt(`Введіть довжину ${i+1} масива`));
+    }
+
+    for(let i = 0 ; i < resultArr.length; i++){
+        for (let j = 0; j < resultArr[i].length; j++) {
+            resultArr[i][j] = prompt(`Введіть значення для елемента в рядку ${i + 1}, стовпці ${j + 1}`);
         }
-        resultArr.push(internalArr);
     }
     return resultArr;
 }
